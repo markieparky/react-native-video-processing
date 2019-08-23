@@ -10,36 +10,35 @@ import GPUImage
 
 @objc(RNVideoPlayer)
 class RNVideoPlayer: RCTView {
-    
- let processingFilters: VideoProcessingGPUFilters = VideoProcessingGPUFilters()
+  let processingFilters: VideoProcessingGPUFilters = VideoProcessingGPUFilters()
 
-    var playerVolume: NSNumber = 0
-    var player: AVPlayer! = nil
-    var playerLayer: AVPlayerLayer?
+  var playerVolume: NSNumber = 0
+  var player: AVPlayer! = nil
+  var playerLayer: AVPlayerLayer?
 
-    var playerCurrentTimeObserver: Any! = nil
-    var playerItem: AVPlayerItem! = nil
-    var gpuMovie: GPUImageMovie! = nil
+  var playerCurrentTimeObserver: Any! = nil
+  var playerItem: AVPlayerItem! = nil
+  var gpuMovie: GPUImageMovie! = nil
 
-    var phantomGpuMovie: GPUImageMovie! = nil
-    var phantomFilterView: GPUImageView = GPUImageView()
+  var phantomGpuMovie: GPUImageMovie! = nil
+  var phantomFilterView: GPUImageView = GPUImageView()
 
-    let filterView: GPUImageView = GPUImageView()
+  let filterView: GPUImageView = GPUImageView()
 
-    var _playerHeight: CGFloat = UIScreen.main.bounds.width * 4 / 3
-    var _playerWidth: CGFloat = UIScreen.main.bounds.width
-    var _moviePathSource: NSString = ""
-    var _playerStartTime: CGFloat = 0
-    var _playerEndTime: CGFloat = 0
-    var _replay: Bool = false
-    var _rotate: Bool = false
-    var isInitialized = false
-    var _resizeMode = AVLayerVideoGravity.resizeAspect
-    @objc var onChange: RCTBubblingEventBlock?
+  var _playerHeight: CGFloat = UIScreen.main.bounds.width * 4 / 3
+  var _playerWidth: CGFloat = UIScreen.main.bounds.width
+  var _moviePathSource: NSString = ""
+  var _playerStartTime: CGFloat = 0
+  var _playerEndTime: CGFloat = 0
+  var _replay: Bool = false
+  var _rotate: Bool = false
+  var isInitialized = false
+  var _resizeMode = AVLayerVideoGravity.resizeAspect
+  @objc var onChange: RCTBubblingEventBlock?
 
-    let LOG_KEY: String = "VIDEO_PROCESSING"
+  let LOG_KEY: String = "VIDEO_PROCESSING"
 
-   @objc func setSource(_ val: NSString) {
+  @objc func setSource(_ val: NSString) {
     source = val
   }
   @objc func setCurrentTime(_ val: NSNumber) {
