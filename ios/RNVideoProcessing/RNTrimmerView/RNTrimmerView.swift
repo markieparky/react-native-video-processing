@@ -20,7 +20,7 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {var trimmerView: ICGVideo
   var _trackerColor: UIColor = UIColor.clear
   var _trackerHandleColor: UIColor = UIColor.clear
   var _showTrackerHandle = false
-
+  
   @objc func setSource(_ val: NSString) {
     source = val
   }
@@ -54,7 +54,7 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {var trimmerView: ICGVideo
   @objc func setTrackerHandleColor(_ val: NSString) {
     trackerHandleColor = val
   }
-
+    
     var source: NSString? {
         set {
             setSource(source: newValue)
@@ -170,7 +170,7 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {var trimmerView: ICGVideo
     
     var currentTime: NSNumber? {
         set {
-            print("CHANGED: [TrimmerView]: currentTime: \(newValue)")
+//            print("CHANGED: [TrimmerView]: currentTime: \(newValue)")
             if newValue != nil && self.trimmerView != nil {
                 let convertedValue = newValue as! CGFloat
                 self.trimmerView?.seek(toTime: convertedValue)

@@ -11,20 +11,20 @@ import GPUImage
 @objc(RNVideoPlayer)
 class RNVideoPlayer: RCTView {
   let processingFilters: VideoProcessingGPUFilters = VideoProcessingGPUFilters()
-
+  
   var playerVolume: NSNumber = 0
   var player: AVPlayer! = nil
   var playerLayer: AVPlayerLayer?
-
+  
   var playerCurrentTimeObserver: Any! = nil
   var playerItem: AVPlayerItem! = nil
   var gpuMovie: GPUImageMovie! = nil
-
+  
   var phantomGpuMovie: GPUImageMovie! = nil
   var phantomFilterView: GPUImageView = GPUImageView()
-
+  
   let filterView: GPUImageView = GPUImageView()
-
+  
   var _playerHeight: CGFloat = UIScreen.main.bounds.width * 4 / 3
   var _playerWidth: CGFloat = UIScreen.main.bounds.width
   var _moviePathSource: NSString = ""
@@ -35,9 +35,9 @@ class RNVideoPlayer: RCTView {
   var isInitialized = false
   var _resizeMode = AVLayerVideoGravity.resizeAspect
   @objc var onChange: RCTBubblingEventBlock?
-
+  
   let LOG_KEY: String = "VIDEO_PROCESSING"
-
+  
   @objc func setSource(_ val: NSString) {
     source = val
   }
@@ -334,7 +334,7 @@ class RNVideoPlayer: RCTView {
     
     func createPlayerObservers() -> Void {
         // TODO: clean obersable when View going to diesappear
-        let interval = CMTimeMakeWithSeconds(1.0, preferredTimescale: Int32(NSEC_PER_SEC))
+        let interval = CMTimeMakeWithSeconds(0.1, preferredTimescale: Int32(NSEC_PER_SEC))
         self.playerCurrentTimeObserver = self.player.addPeriodicTimeObserver(
             forInterval: interval,
             queue: nil,

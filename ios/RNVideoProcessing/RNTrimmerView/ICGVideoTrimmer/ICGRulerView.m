@@ -68,10 +68,10 @@
             NSAttributedString* attrStr;
             
             if (minutes > 0) {
-                attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld:%02ld", (long) minutes, (long) seconds] attributes:stringAttrs];
+                attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld%02ld", (long) minutes, (long) seconds] attributes:stringAttrs];
             }
             else {
-                attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@":%02ld", (long) seconds] attributes:stringAttrs];
+                attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%02ld", (long) seconds] attributes:stringAttrs];
             }
             
             [attrStr drawAtPoint:CGPointMake(x-7, majorY - 15)];
@@ -95,7 +95,7 @@
 
 - (UIColor *)themeColor
 {
-    return _themeColor ?: [UIColor lightGrayColor];
+    return [UIColor lightGrayColor];
 }
 
 

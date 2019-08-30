@@ -85,9 +85,20 @@
         CGRect decoratingRect = CGRectMake(CGRectGetMinX(bubbleFrame)+CGRectGetWidth(bubbleFrame)/2.5, CGRectGetMinY(bubbleFrame)+CGRectGetHeight(bubbleFrame)/4, 1.5, CGRectGetHeight(bubbleFrame)/2);
         UIBezierPath *decoratingPath = [UIBezierPath bezierPathWithRoundedRect:decoratingRect byRoundingCorners: UIRectCornerTopLeft | UIRectCornerBottomLeft | UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii: CGSizeMake(1, 1)];
         [decoratingPath closePath];
-        [[UIColor colorWithWhite:1 alpha:0.5] setFill];
+        [[UIColor colorWithWhite:1 alpha:1] setFill];
         [decoratingPath fill];
-        
+      
+      NSAttributedString* attrStr;
+      
+      
+//      UIFont *font = [UIFont systemFontOfSize:11];
+//      UIColor *textColor = [UIColor lightGrayColor];
+//      NSDictionary *stringAttrs = @{NSFontAttributeName:font, NSForegroundColorAttributeName:textColor};
+//
+//      attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld%02ld", (long) 1, (long) 5] attributes:stringAttrs];
+//
+//      [attrStr drawAtPoint:CGPointMake(5, -50)];
+      
     }
     
     
