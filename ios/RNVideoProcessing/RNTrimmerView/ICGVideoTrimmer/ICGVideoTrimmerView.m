@@ -191,7 +191,7 @@
     self.trackerView = [[UIView alloc] initWithFrame:CGRectMake(self.thumbWidth - self.trackerHandleHeight / 2, 0, 70, CGRectGetHeight(self.frameView.frame) + self.trackerHandleHeight)];
   
   
-  self.trackerMiddleView = [[UIView alloc] initWithFrame:CGRectMake(self.thumbWidth - self.trackerHandleHeight / 2, 0, 70, CGRectGetHeight(self.frameView.frame) + self.trackerHandleHeight)];
+  self.trackerMiddleView = [[UIView alloc] initWithFrame:CGRectMake(self.thumbWidth - self.trackerHandleHeight / 2, 0, CGRectGetWidth(self.contentView.frame), CGRectGetHeight(self.frameView.frame) + self.trackerHandleHeight)];
   
     
     self.tracker = [[UIView alloc] initWithFrame:CGRectMake(self.thumbWidth, 0, 4, CGRectGetHeight(self.frameView.frame) + 2)];
@@ -212,10 +212,10 @@
     if (self.showTrackerHandle) {
         [self.trackerView addSubview: self.trackerHandle];
     }
-    [self.tracker setUserInteractionEnabled:YES];
-    [self.trackerView setUserInteractionEnabled:YES];
+//    [self.tracker setUserInteractionEnabled:YES];
+//    [self.trackerView setUserInteractionEnabled:YES];
   [self.trackerMiddleView setUserInteractionEnabled:YES];
-    [self.trackerHandle setUserInteractionEnabled:YES];
+//    [self.trackerHandle setUserInteractionEnabled:YES];
     [self addSubview:self.trackerView];
   [self addSubview:self.trackerMiddleView];
     
@@ -302,6 +302,8 @@
   [self.rightTimeView setText:[NSString stringWithFormat:@"%ld", (long) 0]];
   
   [self.rightTimeView setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
+  
+  self.trackerView.hidden = true;
     
     [self updateBorderFrames];
     [self notifyDelegate];
@@ -560,15 +562,15 @@
     CGFloat start = CGRectGetMaxX(self.leftOverlayView.frame) / self.widthPerSecond + (self.scrollView.contentOffset.x -self.thumbWidth) / self.widthPerSecond;
   
     if (!self.trackerView.hidden && start != self.startTime) {
-        [self seekToTime:start];
+//        [self seekToTime:start];
     }
     self.startTime = start;
   
-  [self.leftTimeView setText:[NSString stringWithFormat:@"%ld", (long) start]];
+//  [self.leftTimeView setText:[NSString stringWithFormat:@"%ld", (long) start]];
     self.endTime = CGRectGetMinX(self.rightOverlayView.frame) / self.widthPerSecond + (self.scrollView.contentOffset.x - self.thumbWidth) / self.widthPerSecond;
   
   
-  [self.rightTimeView setText:[NSString stringWithFormat:@"%ld", (long) self.endTime]];
+  [self.rightTimeView setText:[NSString stringWithFormat:@"%.0f", (long) self.endTime - start]];
   
   
   NSLog(@"start time : %f", start);
